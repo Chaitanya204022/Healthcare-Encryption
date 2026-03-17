@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthcare Data Encryption System</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; background: #f5f7fa; color: #333; }
+    h1 { color: #1a3a6b; border-bottom: 3px solid #1a3a6b; padding-bottom: 10px; }
+    h2 { color: #2e5496; margin-top: 30px; }
+    .badge { display: inline-block; background: #1a3a6b; color: white; padding: 4px 12px; border-radius: 20px; font-size: 13px; margin: 4px; }
+    .card { background: white; border-radius: 10px; padding: 20px; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .flow { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 15px 0; }
+    .step { background: #e8f0fe; border: 1px solid #2e5496; border-radius: 8px; padding: 8px 16px; font-size: 14px; }
+    .arrow { color: #2e5496; font-size: 20px; }
+    code { background: #f0f0f0; padding: 2px 8px; border-radius: 4px; font-size: 13px; }
+    pre { background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px; overflow-x: auto; font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; }
+    th { background: #1a3a6b; color: white; padding: 10px; text-align: left; }
+    td { padding: 10px; border-bottom: 1px solid #ddd; }
+    tr:nth-child(even) { background: #f0f4ff; }
+    .high { background: #f4cccc; } .med { background: #fff2cc; } .low { background: #d9ead3; }
+  </style>
+</head>
+<body>
+
+  <h1>🏥 Healthcare Data Protection System</h1>
+  <p>A modular Python project demonstrating <strong>AES-256-GCM encryption</strong>, <strong>PBKDF2 key derivation</strong>, and <strong>SHA-256 authentication</strong> applied to a healthcare dataset.</p>
+  <span class="badge">AES-256-GCM</span>
+  <span class="badge">PBKDF2</span>
+  <span class="badge">SHA-256</span>
+  <span class="badge">Python</span>
+  <span class="badge">HIPAA Aligned</span>
+
+  <div class="card">
+    <h2>🔐 Encryption Pipeline</h2>
+    <div class="flow">
+      <div class="step">dataset.xlsx</div><div class="arrow">→</div>
+      <div class="step">SHA-256 Auth</div><div class="arrow">→</div>
+      <div class="step">PBKDF2 Key Derivation</div><div class="arrow">→</div>
+      <div class="step">AES-256-GCM</div><div class="arrow">→</div>
+      <div class="step">encrypted_dataset.bin</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🛡️ Security Features</h2>
+    <table>
+      <tr><th>Feature</th><th>Implementation</th><th>Protection Against</th></tr>
+      <tr><td>Confidentiality</td><td>AES-256-GCM</td><td>Unauthorised data access</td></tr>
+      <tr><td>Integrity</td><td>GCM Auth Tag (128-bit MAC)</td><td>Tampering & bit-flip attacks</td></tr>
+      <tr><td>Authentication</td><td>SHA-256 hashed passwords</td><td>Plaintext password exposure</td></tr>
+      <tr><td>Key Strength</td><td>PBKDF2 — 200,000 iterations</td><td>Brute force attacks</td></tr>
+      <tr><td>Audit Trail</td><td>Timestamped security log</td><td>Non-repudiation</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>📁 Project Structure</h2>
+    <pre>healthcare-encryption/
+├── encrypt_dataset.py    # Encryption pipeline
+├── decrypt_dataset.py    # Decryption + integrity check
+├── login_security.py     # Auth + PBKDF2 key derivation
+└── security_log.py       # Audit logging</pre>
+  </div>
+
+  <div class="card">
+    <h2>⚙️ Key Code</h2>
+    <pre># PBKDF2 Key Derivation
+key = hashlib.pbkdf2_hmac('sha256', password.encode(),
+          salt, iterations=200000, dklen=32)
+
+# AES-256-GCM Encryption
+cipher = AES.new(key, AES.MODE_GCM)
+ciphertext, auth_tag = cipher.encrypt_and_digest(plaintext)
+
+# Authenticated Decryption
+plaintext = cipher.decrypt_and_verify(ciphertext, auth_tag)</pre>
+  </div>
+
+  <div class="card">
+    <h2>🚀 How to Run</h2>
+    <pre>pip install pycryptodome pandas openpyxl
+
+# Encrypt
+python3 encrypt_dataset.py
+
+# Decrypt
+python3 decrypt_dataset.py</pre>
+    <p>Login credentials: <code>admin / Admin@1234</code> &nbsp; <code>doctor / Doctor@5678</code> &nbsp; <code>nurse / Nurse@9012</code></p>
+  </div>
+
+  <div class="card">
+    <h2>📚 Built For</h2>
+    <p>Management Information Systems — Indian Institute of Management Lucknow</p>
+    <p>Case Study: 2024 Change Healthcare Ransomware Attack</p>
+  </div>
+
+</body>
+</html>
